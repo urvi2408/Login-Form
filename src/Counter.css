@@ -1,10 +1,93 @@
-.count{
-   text-align: center;
-   border:2px solid black;
-   border-radius: 10px;
-   width: 300px;
-   margin-left: 600px;
-   margin-top: 40px;
-   padding: 25px;
-   background-color: lightgray;
+.count-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 96px;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--bg);
+  margin-bottom: 16px;
+}
+
+.count-display span {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--ink-900);
+  font-variant-numeric: tabular-nums;
+}
+
+.count-display.negative span {
+  color: var(--danger);
+}
+
+.count-display.positive span {
+  color: var(--accent);
+}
+
+.count-actions {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.count-actions button {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 11px 0;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: transform 0.08s ease, opacity 0.15s ease, background 0.15s ease;
+  font-family: 'Inter', sans-serif;
+}
+
+.count-actions button:active {
+  transform: scale(0.96);
+}
+
+.btn-increment {
+  background: var(--primary);
+  color: #fff;
+}
+.btn-increment:hover {
+  background: var(--primary-dark);
+}
+
+.btn-decrement {
+  background: var(--surface);
+  color: var(--danger);
+  border: 1.5px solid var(--danger-tint) !important;
+}
+.btn-decrement:hover {
+  background: var(--danger-tint);
+}
+
+.reset-btn {
+  width: 100%;
+  background: transparent;
+  color: var(--ink-600);
+  border: 1.5px dashed var(--line);
+  padding: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: transform 0.08s ease, background 0.15s ease, border-color 0.15s ease;
+  font-family: 'Inter', sans-serif;
+}
+
+.reset-btn:hover {
+  background: var(--bg);
+  border-color: var(--ink-400);
+}
+
+.reset-btn:active {
+  transform: scale(0.98);
 }

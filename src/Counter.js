@@ -2,32 +2,57 @@ import React, { useState } from "react";
 import "./Counter.css";
 
 function Count() {
-  const [counter, setNum] = useState(0);
+  const [counter, setCounter] = useState(0);
 
-  const IncNum = () => {
-    setNum(Number(counter) + 1);
+  const handleChange = (e) => {
+    const raw = e.target.value;
+    if (raw === "" || raw === "-") {
+      setCounter(raw);
+      return;
+    }
+    const parsed = Number(raw);
+    if (!Number.isNaN(parsed)) setCounter(parsed);
   };
 
-  const DecNum = () => {
-    setNum(counter - 1);
-  };
+  const increment = () => setCounter((prev) => Number(prev || 0) + 1);
+  const decrement = () => setCounter((prev) => Number(prev || 0) - 1);
+  const reset = () => setCounter(0);
 
-  const Reset = () => {
-    setNum(0);
-  };
+  const numericValue = Number(counter) || 0;
+  const displayClass =
+    "count-display" +
+    (numericValue > 0 ? " positive" : numericValue < 0 ? " negative" : "");
 
   return (
-    <div className="count">
-      <input
-        className="num"
-        value={counter}
-        onChange={(e) => setNum(e.target.value)}
-      ></input>
-      <br />
-      <br />
-      <button onClick={IncNum}>Increment</button>
-      <button onClick={DecNum}>Decrement</button>
-      <button onClick={Reset}>Reset</button>
+    <div className="demo-card">
+      <div className="card-head">
+        <h2>Counter</h2>
+        <span className="file-tag mono">Counter.jsx</span>
+      </div>
+
+      <div className="card-body">
+        <div className={displayClass}>
+          <span>{counter}</span>
+        </div>
+
+        <div className="count-actions">
+          <button className="btn-increment" onClick={increment}>
+            Increment
+          </button>
+          <button className="btn-decrement" onClick={decrement}>
+            Decrement
+          </button>
+        </div>
+
+        <button className="reset-btn" onClick={reset}>
+          Reset
+        </button>
+      </div>
+
+      <div className="state-strip">
+        <span className="state-label mono">state</span>
+        <span className="state-value mono">{`{ counter: ${JSON.stringify(counter)} }`}</span>
+      </div>
     </div>
   );
 }
