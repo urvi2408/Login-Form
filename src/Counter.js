@@ -4,16 +4,6 @@ import "./Counter.css";
 function Count() {
   const [counter, setCounter] = useState(0);
 
-  const handleChange = (e) => {
-    const raw = e.target.value;
-    if (raw === "" || raw === "-") {
-      setCounter(raw);
-      return;
-    }
-    const parsed = Number(raw);
-    if (!Number.isNaN(parsed)) setCounter(parsed);
-  };
-
   const increment = () => setCounter((prev) => Number(prev || 0) + 1);
   const decrement = () => setCounter((prev) => Number(prev || 0) - 1);
   const reset = () => setCounter(0);
